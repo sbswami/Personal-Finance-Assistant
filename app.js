@@ -15,6 +15,7 @@ app.use(passport.session());
 
 require('./passport/strategy/jwt/index');
 require('./passport/strategy/local/index');
+require('./passport/strategy/google/index');
 
 passport.serializeUser(function (user, done) {
     done(null, user);
