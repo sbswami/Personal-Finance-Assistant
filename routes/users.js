@@ -4,7 +4,7 @@ const router = express.Router();
 const passport = require('passport');
 
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+  res.send('List of Users...');
 });
 
 router.post('/create', userController.createUser);
@@ -15,17 +15,16 @@ router.get(
 );
 router.post(
   '/search',
-  passport.authenticate('jwt', { session: true }),
   userController.searchUser,
 );
 router.put(
   '/update/:id',
-  passport.authenticate('jwt', { session: false }),
+  // passport.authenticate('jwt', { session: false }),
   userController.updateUser
 );
 router.delete(
   '/delete/:id',
-  passport.authenticate('jwt', { session: false }),
+  // passport.authenticate('jwt', { session: false }),
   userController.deleteUser
 );
 router.post('/login', passport.authenticate('local'), userController.loginUser);

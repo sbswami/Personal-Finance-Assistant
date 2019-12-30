@@ -40,7 +40,7 @@ const options = {
  * @function
  * @memberof module:connection/mongoose~mongooseConfiguration
  * @inner
- * @param {string} mongoURI - MongoDB Connection URL
+ * @param {String} mongoURI - MongoDB Connection URL
  * @param {object} connectionOptions - MongoDB Connection Options
  */
 mongoose.connect(process.env.mongoURI, options);
@@ -51,7 +51,7 @@ mongoose.connect(process.env.mongoURI, options);
  * @function
  * @memberof module:connection/mongoose~mongooseConfiguration
  * @inner
- * @param {string} connected - Connection Event
+ * @param {String} connected - Connection Event
  * @param {callback} function - Executed After Event Occur
  */
 mongoose.connection.on('connected', () => {
@@ -64,7 +64,7 @@ mongoose.connection.on('connected', () => {
  * @function
  * @memberof module:connection/mongoose~mongooseConfiguration
  * @inner
- * @param {string} error - Connection Event
+ * @param {String} error - Connection Event
  * @param {callback} function - Executes on error in connection
  */
 mongoose.connection.on('error', err => {
@@ -77,7 +77,7 @@ mongoose.connection.on('error', err => {
  * @function
  * @memberof module:connection/mongoose~mongooseConfiguration
  * @inner
- * @param {string} diconnected - Connection Event
+ * @param {String} diconnected - Connection Event
  * @param {callback} function - Executes after disconnected
  */
 mongoose.connection.on("disconnected", () => {
@@ -90,7 +90,7 @@ mongoose.connection.on("disconnected", () => {
  * @function
  * @memberof  module:connection/mongoose~mongooseConfiguration
  * @inner
- * @param {string} SIGINT - Connection Event
+ * @param {String} SIGINT - Connection Event
  * @param {callback} function - To be executed after unexpected shutdown of db server
  */
 process.on('SIGINT', function() {
