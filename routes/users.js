@@ -43,8 +43,8 @@ router.get(
   passport.authenticate(
     'google',
     {
-      failureRedirect: 'http://localhost:8080/login',
-      successRedirect: 'http://localhost:8080/',
+      failureRedirect: process.env.GOOGLE_FAILURE_REDIRECT,
+      successRedirect: process.env.GOOGLE_SUCCESS_REDIRECT,
     },
   ),
   function (req, res) {
