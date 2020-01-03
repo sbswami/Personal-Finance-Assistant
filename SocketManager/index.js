@@ -1,9 +1,36 @@
+/**
+ * Socket Manager
+ * @module socketManager/index
+ */
+
+/**
+ * @namespace socketManager
+ */
+
+/**
+ * Requiring Logger
+ * @constant
+ */
 const { logger } = require('../logging/index');
 
+/**
+ * @exports
+ * @name SocketManager
+ * @function
+ * @memberof module:socketManager/index~socketManager
+ * @inner
+ * @param {any} socket - Socket 
+ */
 module.exports.SocketManager = socket => {
-  console.log('Hureee!');
+  /**
+   * Listener for user-track Event
+   * @name on
+   * @function
+   * @inner
+   * @param {String} Event - Event listener
+   * @param {Callback} Function - Callback with Payload
+   */
   socket.on('user-track', (payload) => {
-    console.log(payload);
     logger.addContext('screen', payload.screen);
     logger.addContext('browser', payload.browser);
     logger.addContext('country', payload.country);

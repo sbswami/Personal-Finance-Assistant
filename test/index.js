@@ -2,13 +2,46 @@
  * @module user/tests
  */
 
-const mongoose = require("mongoose");
-const { User } = require('../schema/index');
-const chai = require("chai");
-const chaiHttp = require("chai-http");
-const server = require('../app');
-const should = chai.should();
+/**
+ * @namespace test
+ */
 
+/**
+ * Requiring User Schema
+ * @constant
+ */
+const { User } = require('../schema/index');
+
+/**
+ * Requiring Chai - the library with many assertions
+ * @constant
+ */
+const chai = require("chai");
+
+/**
+ * Requiring Chai HTTP - Test HTTP Request and Responses
+ * @constant
+ */
+const chaiHttp = require("chai-http");
+
+/**
+ * Requiring Server
+ * @constant
+ */
+const server = require('../app');
+
+// const should = chai.should();
+
+/**
+ * Dummy User
+ * @typedef {Object} dummyUser
+ * @property {String} fullName Name of User | Grab from request body
+ * @property {Date} dob User Date of Birthday
+ * @property {String} businessName Name of User business
+ * @property {String} phone User phone number
+ * @property {String} email User Mail
+ * @property {String} password
+ */
 const dummyUser = {
   fullName: "Full Name",
   dob: 18 - 11 - 2019,
@@ -18,6 +51,16 @@ const dummyUser = {
   password: '$%###%$',
 };
 
+/**
+ * Test User
+ * @typedef {Object} testUser
+ * @property {String} fullName Name of User | Grab from request body
+ * @property {Date} dob User Date of Birthday
+ * @property {String} businessName Name of User business
+ * @property {String} phone User phone number
+ * @property {String} email User Mail
+ * @property {String} password
+ */
 const testUser = {
   fullName: "Full Name",
   dob: 18 - 11 - 2019,
@@ -27,8 +70,20 @@ const testUser = {
   password: '$%###%$',
 };
 
+/// User Object to Track and Delete After Test
 var mongoUser;
+
+/// User Object to Track and Delete After Test
 var mongotrainer;
+
+/**
+ * User Chai HTTP Library for HTTP Request and Response in testing
+ * @name use
+ * @method
+ * @memberof module:user/tests~test
+ * @inner
+ * @param {method} chaiHttp
+ */
 chai.use(chaiHttp);
 
 
@@ -41,8 +96,6 @@ chai.use(chaiHttp);
 before(done => {
   console.log('Before Testing!');
   User.create([dummyUser, testUser], (err, users) => {
-    // if(err)
-    //   return done();
     mongoUser = users[0];
     mongotrainer = users[1];
     done();
@@ -127,7 +180,7 @@ describe('Create User', () => {
         res.should.have.status(400);
         res.body.should.be.a('object');
       });
-      done();
+    done();
   });
 });
 
@@ -286,10 +339,10 @@ describe("Search User", () => {
 
 after(done => {
   console.info('After all Done!');
-  User.deleteOne({_id: mongoUser._id}, err => {
+  User.deleteOne({ _id: mongoUser._id }, err => {
     console.log(err);
   });
-  User.deleteOne({_id: mongotrainer._id}, err => {
+  User.deleteOne({ _id: mongotrainer._id }, err => {
     console.log(err);
   });
   done();

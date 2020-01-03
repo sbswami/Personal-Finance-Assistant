@@ -62,7 +62,6 @@ passport.use(
       const fullName = profile.displayName;
       const email = profile.emails[0]['value'];
       const user_data = { fullName, email };
-      console.log(accessToken, refreshToken, user_data);
       return done(JSON.stringify(user_data));
     }
   )

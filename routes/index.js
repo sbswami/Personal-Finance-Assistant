@@ -1,10 +1,37 @@
-var express = require('express');
-var router = express.Router();
+/**
+ * Routes
+ * @module routes/index
+ */
 
-/* GET home page. */
+/**
+ * @namespace Routes
+ */
+
+/**
+ * Requiring Express
+ * @constant
+ */
+const express = require('express');
+
+/**
+ * Getting Router from Express
+ * @constant
+ */
+const router = express.Router();
+
+/**
+ * Root Address of USERS
+ * @name get
+ * @method
+ * @inner
+ * @param {String} path - /
+ * @param {Callback} callback - With Parameters: Request, Response, Next
+ */
 router.get('/', function(req, res, next) {
   res.send('It\'s Working!');
-  // res.send('IT\'s Working');
 });
 
+/**
+ * @exports router
+ */
 module.exports = router;
